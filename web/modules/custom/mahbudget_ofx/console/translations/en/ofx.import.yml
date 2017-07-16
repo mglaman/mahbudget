@@ -1,0 +1,6 @@
+description: 'Imports accounts and transactions from an OFX file.'
+options: {}
+arguments:
+  file: 'The OFX file'
+messages:
+    success: 'Finished importing accounts and transactions.'

@@ -1,0 +1,10 @@
+entity.budget_account.add_form:
+  route_name: entity.budget_account.add_form
+  title: 'Add Budget account'
+  appears_on:
+    - entity.budget_account.collection
+entity.budget_transactions.add_form:
+  route_name: entity.budget_transactions.add_form
+  title: 'Add Budget transactions'
+  appears_on:
+    - entity.budget_transactions.collection

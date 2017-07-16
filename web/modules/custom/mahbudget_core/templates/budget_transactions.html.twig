@@ -1,0 +1,22 @@
+{#
+/**
+ * @file budget_transactions.html.twig
+ * Default theme implementation to present Budget transactions data.
+ *
+ * This template is used when viewing Budget transactions pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_budget_transactions()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('budget_transactions') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

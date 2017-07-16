@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+define('CLI_ROOT', __DIR__);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+require CLI_ROOT . '/vendor/autoload.php';

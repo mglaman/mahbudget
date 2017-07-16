@@ -1,0 +1,4 @@
+name: MahBudget OFX
+description: Integration for OFX parsing
+core: 8.x
+type: module

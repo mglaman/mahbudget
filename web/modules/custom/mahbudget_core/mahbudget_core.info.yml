@@ -1,0 +1,8 @@
+name: MahBudget Core
+description: Core module, data models.
+core: 8.x
+type: module
+dependencies:
+  - entity
+  - commerce
+  - commerce_price

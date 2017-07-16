@@ -1,0 +1,7 @@
+services:
+  mahbudget_ofx.ofx_import:
+    class: Drupal\mahbudget_ofx\Command\OfxImportCommand
+    arguments: ['@entity_type.manager', '@mahbudget_ofx.parser']
+    tags:
+      - { name: drupal.command }
+

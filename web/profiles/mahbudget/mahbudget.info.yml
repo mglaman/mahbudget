@@ -1,0 +1,20 @@
+name: MahBudget
+type: profile
+description: My Useful Profile
+core: 8.x
+
+distribution:
+  name: MahBudget
+
+base profile:
+  name: standard
+  excluded_themes:
+    - classy
+
+dependencies:
+  - mahbudget_core
+  - mahbudget_ofx
+  - admin_toolbar
+  - views
+themes:
+  - material_admin

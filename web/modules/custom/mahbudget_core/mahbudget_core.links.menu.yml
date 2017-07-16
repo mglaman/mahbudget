@@ -1,0 +1,28 @@
+
+# Budget account menu items definition
+entity.budget_account.collection:
+  title: 'Budget account list'
+  route_name: entity.budget_account.collection
+  description: 'List Budget account entities'
+  parent: system.admin_structure
+  weight: 100
+
+budget_account.admin.structure.settings:
+  title: Budget account settings
+  description: 'Configure Budget account entities'
+  route_name: budget_account.settings
+  parent: system.admin_structure
+
+# Budget transactions menu items definition
+entity.budget_transactions.collection:
+  title: 'Budget transactions list'
+  route_name: entity.budget_transactions.collection
+  description: 'List Budget transactions entities'
+  parent: system.admin_structure
+  weight: 100
+
+budget_transactions.admin.structure.settings:
+  title: Budget transactions settings
+  description: 'Configure Budget transactions entities'
+  route_name: budget_transactions.settings
+  parent: system.admin_structure

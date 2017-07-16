@@ -1,0 +1,3 @@
+services:
+  mahbudget_ofx.parser:
+    class: Drupal\mahbudget_ofx\OfxParser
