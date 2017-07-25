@@ -1,0 +1,8 @@
+name: mahbudget_budgets
+type: module
+description: Budgets
+core: 8.x
+package: MahBudget
+dependencies:
+  - mahbudget_core
+  - datetime

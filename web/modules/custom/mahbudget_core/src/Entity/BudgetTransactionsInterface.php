@@ -13,7 +13,20 @@ use Drupal\user\EntityOwnerInterface;
  */
 interface BudgetTransactionsInterface extends  ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface {
 
-  // Add get/set methods for your configuration properties here.
+  const CREDIT = 'Credit';
+  const DEBIT = 'Debit';
+  const INT = 'Interest';
+  const DIV = 'Dividends';
+  const FEE = 'Fee';
+  const SRVCHG = 'Service charge';
+  const DEP = 'Deposit';
+  const ATM = 'ATM';
+  const XFER = 'Transfer';
+  const CHECK = 'Check';
+  const PAYMENT = 'Payment';
+  const CASH = 'Cash withdrawl';
+  const DIRECTDEP = 'Direct deposit';
+  const DIRECTDEBIT = 'Direct debit';
 
   /**
    * Gets the Budget transactions name.

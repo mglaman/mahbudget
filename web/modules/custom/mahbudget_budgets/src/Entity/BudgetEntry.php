@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\mahbudget_core\Entity;
+namespace Drupal\mahbudget_budgets\Entity;
 
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
@@ -10,31 +10,32 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the Budget transactions entity.
+ * Defines the Budget entry entity.
  *
- * @ingroup mahbudget_core
+ * @ingroup mahbudget_budgets
  *
  * @ContentEntityType(
- *   id = "budget_transactions",
- *   label = @Translation("Budget transactions"),
+ *   id = "budget_entry",
+ *   label = @Translation("Budget entry"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\mahbudget_core\BudgetTransactionsListBuilder",
- *     "views_data" = "Drupal\mahbudget_core\Entity\BudgetTransactionsViewsData",
+ *     "list_builder" = "Drupal\mahbudget_budgets\BudgetEntryListBuilder",
+ *     "views_data" = "Drupal\mahbudget_budgets\Entity\BudgetEntryViewsData",
+ *
  *     "form" = {
- *       "default" = "Drupal\mahbudget_core\Form\BudgetTransactionsForm",
- *       "add" = "Drupal\mahbudget_core\Form\BudgetTransactionsForm",
- *       "edit" = "Drupal\mahbudget_core\Form\BudgetTransactionsForm",
- *       "delete" = "Drupal\mahbudget_core\Form\BudgetTransactionsDeleteForm",
+ *       "default" = "Drupal\mahbudget_budgets\Form\BudgetEntryForm",
+ *       "add" = "Drupal\mahbudget_budgets\Form\BudgetEntryForm",
+ *       "edit" = "Drupal\mahbudget_budgets\Form\BudgetEntryForm",
+ *       "delete" = "Drupal\mahbudget_budgets\Form\BudgetEntryDeleteForm",
  *     },
  *     "access" = "\Drupal\entity\EntityAccessControlHandler",
  *     "permission_provider" = "\Drupal\entity\EntityPermissionProvider",
  *     "route_provider" = {
- *       "html" = "Drupal\mahbudget_core\BudgetTransactionsHtmlRouteProvider",
+ *       "html" = "Drupal\mahbudget_budgets\BudgetEntryHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "budget_transactions",
- *   admin_permission = "administer budget_transactions",
+ *   base_table = "budget_entry",
+ *   admin_permission = "administer budget_entry",
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "name",
@@ -42,19 +43,18 @@ use Drupal\user\UserInterface;
  *     "uid" = "user_id",
  *     "langcode" = "langcode",
  *     "status" = "status",
- *     "bundle" = "type"
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/budget_transactions/{budget_transactions}",
- *     "add-form" = "/admin/structure/budget_transactions/add",
- *     "edit-form" = "/admin/structure/budget_transactions/{budget_transactions}/edit",
- *     "delete-form" = "/admin/structure/budget_transactions/{budget_transactions}/delete",
- *     "collection" = "/admin/structure/budget_transactions",
+ *     "canonical" = "/admin/structure/budget_entry/{budget_entry}",
+ *     "add-form" = "/admin/structure/budget_entry/add",
+ *     "edit-form" = "/admin/structure/budget_entry/{budget_entry}/edit",
+ *     "delete-form" = "/admin/structure/budget_entry/{budget_entry}/delete",
+ *     "collection" = "/admin/structure/budget_entry",
  *   },
- *   field_ui_base_route = "budget_transactions.settings"
+ *   field_ui_base_route = "budget_entry.settings"
  * )
  */
-class BudgetTransactions extends ContentEntityBase implements BudgetTransactionsInterface {
+class BudgetEntry extends ContentEntityBase implements BudgetEntryInterface {
 
   use EntityChangedTrait;
 
@@ -149,32 +149,9 @@ class BudgetTransactions extends ContentEntityBase implements BudgetTransactions
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    $fields['account_id'] = BaseFieldDefinition::create('entity_reference')
-      ->setLabel(t('Budget account'))
-      ->setDescription(t('The budget account.'))
-      ->setSetting('target_type', 'budget_account')
-      ->setSetting('handler', 'default')
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'author',
-        'weight' => 0,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'entity_reference_autocomplete',
-        'weight' => 5,
-        'settings' => [
-          'match_operator' => 'CONTAINS',
-          'size' => '60',
-          'autocomplete_type' => 'tags',
-          'placeholder' => '',
-        ],
-      ])
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Authored by'))
-      ->setDescription(t('The user ID of author of the Budget transactions entity.'))
+      ->setDescription(t('The user ID of author of the Budget entry entity.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setSetting('handler', 'default')
@@ -199,7 +176,7 @@ class BudgetTransactions extends ContentEntityBase implements BudgetTransactions
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Budget transactions entity.'))
+      ->setDescription(t('The name of the Budget entry entity.'))
       ->setSettings([
         'max_length' => 50,
         'text_processing' => 0,
@@ -217,36 +194,9 @@ class BudgetTransactions extends ContentEntityBase implements BudgetTransactions
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['unique_id'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Unique ID'))
-      ->setDescription(t('The unique transaction ID'))
-      ->setSettings([
-        'max_length' => 255,
-        'text_processing' => 0,
-      ])
-      ->setDefaultValue('')
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-    $fields['amount'] = BaseFieldDefinition::create('commerce_price')
-      ->setLabel(t('Amount'))
-      ->setDescription(t('The amount'))
-      ->setRequired(TRUE)
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'commerce_price_default',
-        'weight' => 0,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'commerce_price_default',
-        'weight' => 0,
-      ])
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
-      ->setDescription(t('A boolean indicating whether the Budget transactions is published.'))
+      ->setDescription(t('A boolean indicating whether the Budget entry is published.'))
       ->setDefaultValue(TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')

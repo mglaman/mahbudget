@@ -16,5 +16,7 @@ dependencies:
   - mahbudget_ofx
   - admin_toolbar
   - views
+  - page_manager
+
 themes:
   - material_admin

@@ -87,6 +87,7 @@ class OfxImportCommand extends Command {
 
       $statement = $bankAccount->statement;
       foreach ($statement->transactions as $transaction) {
+        $transaction_type = \Drupal::getContainer()->get('mahbudget_ofx.transaction_type_resolver');
         $existing = $transaction_storage->loadByProperties(['unique_id' => $transaction->uniqueId]);
         if (empty($existing)) {
           /** @var \Drupal\mahbudget_core\Entity\BudgetTransactionsInterface $entry */
@@ -94,17 +95,17 @@ class OfxImportCommand extends Command {
             'account_id' => $budget_account->id(),
             'user_id' => $budget_account->getOwnerId(),
             'name' => $transaction->memo,
+            'type' => $transaction_type->resolve($transaction),
             'amount' => new Price((string) $transaction->amount, 'USD'),
             'created' => $transaction->date->getTimestamp(),
             'unique_id' => $transaction->uniqueId,
           ]);
-          $violations = $entry->validate();
-          foreach ($violations->getEntityViolations() as $violation) {
-            /** @var \Symfony\Component\Validator\ConstraintViolationInterface $violation */
-            $output->writeln("<error>{$violation->getMessage()}</error>");
-          }
-          $entry->save();
         }
+        else {
+          $entry = reset($existing);
+          $entry->get('type')->setValue($transaction_type->resolve($transaction));
+        }
+        $entry->save();
       }
     }
 

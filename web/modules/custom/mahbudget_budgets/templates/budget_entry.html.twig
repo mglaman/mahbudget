@@ -1,0 +1,22 @@
+{#
+/**
+ * @file budget_entry.html.twig
+ * Default theme implementation to present Budget entry data.
+ *
+ * This template is used when viewing Budget entry pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_budget_entry()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('budget_entry') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

@@ -1,0 +1,44 @@
+# Budget routing definition
+budget.settings_tab:
+  route_name: budget.settings
+  title: 'Settings'
+  base_route: budget.settings
+
+entity.budget.canonical:
+  route_name: entity.budget.canonical
+  base_route: entity.budget.canonical
+  title: 'View'
+
+entity.budget.edit_form:
+  route_name: entity.budget.edit_form
+  base_route: entity.budget.canonical
+  title: 'Edit'
+
+entity.budget.delete_form:
+  route_name:  entity.budget.delete_form
+  base_route:  entity.budget.canonical
+  title: Delete
+  weight: 10
+
+# Budget entry routing definition
+budget_entry.settings_tab:
+  route_name: budget_entry.settings
+  title: 'Settings'
+  base_route: budget_entry.settings
+
+entity.budget_entry.canonical:
+  route_name: entity.budget_entry.canonical
+  base_route: entity.budget_entry.canonical
+  title: 'View'
+
+entity.budget_entry.edit_form:
+  route_name: entity.budget_entry.edit_form
+  base_route: entity.budget_entry.canonical
+  title: 'Edit'
+
+entity.budget_entry.delete_form:
+  route_name:  entity.budget_entry.delete_form
+  base_route:  entity.budget_entry.canonical
+  title: Delete
+  weight: 10
+

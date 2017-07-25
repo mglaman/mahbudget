@@ -1,3 +1,5 @@
 services:
   mahbudget_ofx.parser:
     class: Drupal\mahbudget_ofx\OfxParser
+  mahbudget_ofx.transaction_type_resolver:
+    class: Drupal\mahbudget_ofx\TransactionTypeResolver

@@ -1,0 +1,28 @@
+
+# Budget menu items definition
+entity.budget.collection:
+  title: 'Budget list'
+  route_name: entity.budget.collection
+  description: 'List Budget entities'
+  parent: system.admin_structure
+  weight: 100
+
+budget.admin.structure.settings:
+  title: Budget settings
+  description: 'Configure Budget entities'
+  route_name: budget.settings
+  parent: system.admin_structure
+
+# Budget entry menu items definition
+entity.budget_entry.collection:
+  title: 'Budget entry list'
+  route_name: entity.budget_entry.collection
+  description: 'List Budget entry entities'
+  parent: system.admin_structure
+  weight: 100
+
+budget_entry.admin.structure.settings:
+  title: Budget entry settings
+  description: 'Configure Budget entry entities'
+  route_name: budget_entry.settings
+  parent: system.admin_structure
