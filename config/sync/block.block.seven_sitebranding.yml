@@ -1,0 +1,30 @@
+uuid: 6e95a57c-f3b3-4c8d-bbe5-be0fbd2537eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - seven
+_core:
+  default_config_hash: GLpoTqCVw6WJGIHDG64W38CXF0-259jw43oE_4Hwiw4
+id: seven_sitebranding
+theme: seven
+region: header
+weight: -10
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Material Admin Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/user/login\r\n/user/password\r\n/user/register"
+    negate: false
+    context_mapping: {  }

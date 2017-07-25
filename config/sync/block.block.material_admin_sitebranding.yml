@@ -1,0 +1,30 @@
+uuid: d920f7f5-b620-4944-8c21-2adaa329a237
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - material_admin
+_core:
+  default_config_hash: GLpoTqCVw6WJGIHDG64W38CXF0-259jw43oE_4Hwiw4
+id: material_admin_sitebranding
+theme: material_admin
+region: header
+weight: -10
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Material Admin Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/user/login\r\n/user/password\r\n/user/register"
+    negate: false
+    context_mapping: {  }

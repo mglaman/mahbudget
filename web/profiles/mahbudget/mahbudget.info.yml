@@ -6,11 +6,6 @@ core: 8.x
 distribution:
   name: MahBudget
 
-base profile:
-  name: standard
-  excluded_themes:
-    - classy
-
 dependencies:
   - mahbudget_core
   - mahbudget_ofx
@@ -20,3 +15,5 @@ dependencies:
 
 themes:
   - material_admin
+
+config_install: true

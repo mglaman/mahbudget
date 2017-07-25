@@ -90,6 +90,7 @@ class OfxImportCommand extends Command {
         $transaction_type = \Drupal::getContainer()->get('mahbudget_ofx.transaction_type_resolver');
         $existing = $transaction_storage->loadByProperties(['unique_id' => $transaction->uniqueId]);
         if (empty($existing)) {
+          $io->info('<info>Creating new transaction</info>');
           /** @var \Drupal\mahbudget_core\Entity\BudgetTransactionsInterface $entry */
           $entry = $transaction_storage->create([
             'account_id' => $budget_account->id(),

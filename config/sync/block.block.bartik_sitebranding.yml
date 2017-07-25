@@ -1,0 +1,30 @@
+uuid: 4760f87c-7272-42a4-9854-8661c2a7cc1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bartik
+_core:
+  default_config_hash: GLpoTqCVw6WJGIHDG64W38CXF0-259jw43oE_4Hwiw4
+id: bartik_sitebranding
+theme: bartik
+region: header
+weight: -10
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Material Admin Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/user/login\r\n/user/password\r\n/user/register"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,20 @@
+uuid: 3ab80c77-a4ac-460c-bdd4-a9b37bb44fa3
+langcode: en
+status: true
+dependencies:
+  theme:
+    - material_admin
+_core:
+  default_config_hash: 0ea0tXS7pWTUTKSd7KSbqL8mEu_Z0SukTdWaSlmcHe0
+id: material_admin_local_actions
+theme: material_admin
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

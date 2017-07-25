@@ -13,9 +13,5 @@
  * @see system_install()
  */
 function mahbudget_install() {
-  // First, do everything that is done in the standard profile.
-  include_once DRUPAL_ROOT . '/core/profiles/standard/standard.install';
-  standard_install();
-
   // Add code here to make nodes, terms, etc.
 }

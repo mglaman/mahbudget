@@ -1,0 +1,15 @@
+uuid: 104b3b3e-29ef-41fe-ad80-114ba333f3e0
+name: 'Mah Budget'
+mail: admin@example.com
+slogan: 'Because your budget matters'
+page:
+  403: ''
+  404: ''
+  front: /user
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: AyT9s8OUcclfALRE_imByOMgtZ19eOlqdF6zI3p7yqo
+mail_notification: ''

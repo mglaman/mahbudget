@@ -1,0 +1,20 @@
+uuid: 0363aa44-c677-40e6-85be-7c6ca5ad4660
+langcode: en
+status: true
+dependencies:
+  theme:
+    - material_admin
+_core:
+  default_config_hash: YhQHEJqf0jFz-zPDOUTasDy95lne_53ZCB6oolPGLTs
+id: material_admin_page_title
+theme: material_admin
+region: header
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

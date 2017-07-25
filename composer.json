@@ -29,6 +29,7 @@
         "drupal/material_admin": "1.x-dev",
         "drupal/page_manager": "^4.0@beta",
         "drupal/panels": "^4.1",
+        "drupal/views_data_export": "1.x-dev",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^0.3.0",
         "webmozart/path-util": "^2.3"
@@ -36,6 +37,7 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "drupal/config_devel": "^1.0",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
@@ -74,18 +76,12 @@
     "extra": {
         "patches": {
             "drupal/core": {
-                "2652138 - ImageFormatter does not support SVGs":
-                "https://www.drupal.org/files/issues/2652138-41.patch",
-                "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order":
-                "https://www.drupal.org/files/issues/1356276-348.patch",
+                "2788777 - Allow a profile to be installed from existing config": 
+                "https://www.drupal.org/files/issues/2788777-33.patch",
                 "2880374 - Experimental modules should not have warnings after being installed":
                 "https://www.drupal.org/files/issues/2880374-remove-experimental-warnings-6.patch",
-                "2880445 - Config sync should not throw a warning when not being writable":
-                "https://www.drupal.org/files/issues/2880445-remove-config-write-warning-2.patch",
                 "2869592 - Disabled update module shouldn't produce a status report warning":
-                "https://www.drupal.org/files/issues/2869592-remove-update-warning-7.patch",
-                "2885441 - EntityReferenceAutocompleteWidget should define its size setting as an integer":
-                "https://www.drupal.org/files/issues/2885441-2.patch"
+                "https://www.drupal.org/files/issues/2869592-remove-update-warning-7.patch"
             }
         },
         "installer-paths": {
