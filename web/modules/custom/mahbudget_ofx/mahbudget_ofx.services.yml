@@ -1,5 +1,13 @@
 services:
   mahbudget_ofx.parser:
     class: Drupal\mahbudget_ofx\OfxParser
+  mahbudget_ofx.qfx_parser:
+    class: Drupal\mahbudget_ofx\QfxParser
+  mahbudget_ofx.importer:
+    class: Drupal\mahbudget_ofx\OfxImporter
+    arguments: ['@mahbudget_ofx.parser', '@entity_type.manager']
+  mahbudget_ofx.qfx_importer:
+    class: Drupal\mahbudget_ofx\QfxImporter
+    arguments: ['@mahbudget_ofx.qfx_parser', '@entity_type.manager']
   mahbudget_ofx.transaction_type_resolver:
     class: Drupal\mahbudget_ofx\TransactionTypeResolver

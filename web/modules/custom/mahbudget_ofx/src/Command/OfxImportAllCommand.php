@@ -2,10 +2,7 @@
 
 namespace Drupal\mahbudget_ofx\Command;
 
-use Drupal\commerce_price\Price;
-use Drupal\mahbudget_core\Entity\BudgetAccountInterface;
 use Drupal\mahbudget_ofx\OfxImporter;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
@@ -14,16 +11,17 @@ use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Annotations\DrupalCommand;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\mahbudget_ofx\OfxParser;
+use Symfony\Component\Finder\Finder;
 
 /**
- * Class OfxImportCommand.
+ * Class OfxImportAllCommand.
  *
  * @DrupalCommand (
  *     extension="mahbudget_ofx",
  *     extensionType="module"
  * )
  */
-class OfxImportCommand extends Command {
+class OfxImportAllCommand extends Command {
 
   use CommandTrait;
 
@@ -39,14 +37,14 @@ class OfxImportCommand extends Command {
     $this->ofxImporter = $qfxImporter;
     parent::__construct();
   }
+
   /**
    * {@inheritdoc}
    */
   protected function configure() {
     $this
-      ->setName('ofx:import')
-      ->addArgument('file', InputArgument::REQUIRED, $this->trans('commands.ofx.import.arguments.file'))
-      ->setDescription($this->trans('commands.ofx.import.description'));
+      ->setName('ofx:import:all')
+      ->setDescription($this->trans('commands.ofx.import.all.description'));
   }
 
   /**
@@ -54,7 +52,20 @@ class OfxImportCommand extends Command {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $io = new DrupalStyle($input, $output);
-    $this->ofxImporter->import($input->getArgument('file'));
-    $io->info($this->trans('commands.ofx.import.messages.success'));
+
+    $finder = new Finder();
+    $finder->files()
+      ->in(\Drupal::root() . '/../private')
+      ->depth('< 4')
+      ->name('/\.ofx$/');
+
+    $io->info(sprintf('Importing %s files', $finder->count()));
+    foreach ($finder as $file) {
+      $io->comment(sprintf('Importing %s', $file->getFilename()));
+      $this->ofxImporter->import($file->getRealPath());
+      sleep(1);
+    }
+
+    $io->info($this->trans('commands.ofx.import.all.messages.success'));
   }
 }

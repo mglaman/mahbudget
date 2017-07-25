@@ -1,7 +1,19 @@
 services:
   mahbudget_ofx.ofx_import:
     class: Drupal\mahbudget_ofx\Command\OfxImportCommand
-    arguments: ['@entity_type.manager', '@mahbudget_ofx.parser']
+    arguments: ['@mahbudget_ofx.importer']
+    tags:
+      - { name: drupal.command }
+
+  mahbudget_ofx.qfx_import:
+    class: Drupal\mahbudget_ofx\Command\QfxImportCommand
+    arguments: ['@mahbudget_ofx.qfx_importer']
+    tags:
+      - { name: drupal.command }
+
+  mahbudget_ofx.ofx_import_all:
+    class: Drupal\mahbudget_ofx\Command\OfxImportAllCommand
+    arguments: ['@mahbudget_ofx.importer']
     tags:
       - { name: drupal.command }
 

@@ -1,0 +1,5 @@
+description: 'Imports all OFX in the private directory'
+options: {}
+arguments: {}
+messages:
+    success: 'All files imported.'
